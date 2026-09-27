@@ -6,7 +6,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-</head><body>
+
+<style>
+.pub-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:24px}
+.pub-stat{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:14px;padding:16px 16px 15px;background:var(--card);box-shadow:var(--shadow-sm)}
+.pub-stat:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--stat-color)}
+.pub-stat-number{display:block;font-size:1.7rem;line-height:1;font-weight:800;color:var(--text);margin-bottom:7px}
+.pub-stat-label{display:block;font-size:.79rem;font-weight:750;color:var(--muted);line-height:1.3}
+.pub-stat.journal{--stat-color:#2563eb;background:#f8fbff}
+.pub-stat.conference{--stat-color:#7c3aed;background:#fbf9ff}
+.pub-stat.workshop{--stat-color:#d97706;background:#fffaf2}
+.pub-stat.review{--stat-color:#dc2626;background:#fff8f8}
+.pub-stat.total{--stat-color:#059669;background:#f6fffb}
+[data-theme="dark"] .pub-stat{background:var(--card)}
+.pub-summary-note{margin-top:9px;font-size:.76rem;color:var(--subtle)}
+@media(max-width:950px){.pub-summary{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.pub-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.pub-stat.total{grid-column:1/-1}}
+</style></head><body>
 <nav class="site-nav">
   <div class="container nav-wrap">
     <a class="brand" href="index.html">Nasim Ahmed</a>
@@ -24,7 +40,15 @@
     </div>
   </div>
 </nav>
-<main class="page-main"><section class="page-hero"><div class="container"><div class="eyebrow">Publications</div><h1>Publications & manuscripts</h1><p class="lead narrow">Research across extended reality, human-centered AI, privacy, security, cognitive modeling, cybersickness, and immersive-system safety.</p><div class="hero-actions"><a class="btn primary" href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></div></div></section>
+<main class="page-main"><section class="page-hero"><div class="container"><div class="eyebrow">Publications</div><h1>Publications & manuscripts</h1><p class="lead narrow">Research across extended reality, human-centered AI, privacy, security, cognitive modeling, cybersickness, and immersive-system safety.</p><div class="hero-actions"><a class="btn primary" href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></div>
+<div class="pub-summary" aria-label="Publication counts by category">
+  <div class="pub-stat journal"><span class="pub-stat-number">4</span><span class="pub-stat-label">Journal Articles</span></div>
+  <div class="pub-stat conference"><span class="pub-stat-number">8</span><span class="pub-stat-label">Conference Papers</span></div>
+  <div class="pub-stat workshop"><span class="pub-stat-number">3</span><span class="pub-stat-label">Workshop / Adjunct</span></div>
+  <div class="pub-stat review"><span class="pub-stat-number">1</span><span class="pub-stat-label">Under Review</span></div>
+  <div class="pub-stat total"><span class="pub-stat-number">15</span><span class="pub-stat-label">Published Works</span></div>
+</div>
+<div class="pub-summary-note">Counts reflect the publications currently listed on this page; the published total excludes the manuscript under review.</div></div></section>
 <section><div class="container pub-layout"><aside class="toc card"><strong>On this page</strong><a href="#journals">Journal articles</a><a href="#review">Under review</a><a href="#conferences">Conference & workshop</a></aside><div>
 <div id="journals" class="section-block"><div class="section-head"><div><div class="eyebrow">Journals</div><h2>Journal publications</h2></div></div>
 <div class="pub-list">
