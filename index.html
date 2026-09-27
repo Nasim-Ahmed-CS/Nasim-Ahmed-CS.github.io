@@ -1,190 +1,79 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Nasim Ahmed — PhD student and XR researcher working on human-centered immersive systems, safety, privacy, security, engagement, and cognitive modeling.">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Nasim Ahmed — PhD student and XR researcher in human-centered immersive systems, safety, privacy, security, engagement, and cognitive modeling.">
+<meta name="author" content="Nasim Ahmed"><meta name="theme-color" content="#173f8f">
 <title>Nasim Ahmed | XR Researcher</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-<nav>
+</head><body>
+<nav class="site-nav">
   <div class="container nav-wrap">
-    <a class="brand" href="#top">Nasim Ahmed</a>
+    <a class="brand" href="index.html">Nasim Ahmed</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div class="nav-links">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a>
-      <a href="#experience">Experience</a><a href="#teaching">Teaching</a><a href="#awards">Awards</a>
-      <a href="#resources">Resources</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      <a class="active" href="index.html">Home</a>
+      <a  href="research.html">Research</a>
+      <a  href="publications.html">Publications</a>
+      <a  href="projects.html">Projects</a>
+      <a  href="experience.html">Experience</a>
+      <a  href="teaching.html">Teaching</a>
+      <a  href="service.html">Service</a>
+      <a  href="awards.html">Awards</a>
+      <a  href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
-
-<header class="hero" id="top">
+<header class="hero home-hero">
   <div class="container hero-grid">
     <div>
       <span class="kicker">PhD Student · XR Researcher · HiX Lab</span>
-      <h1>Human-centered intelligence for safer immersive systems.</h1>
-      <p>I am a PhD student in Computer Science at Kennesaw State University and a Graduate Research Assistant at the Human-Centered Immersive eXperience Lab (HiX Lab). My research spans extended reality, human-centered AI, user safety, privacy and security, engagement, cybersickness, and cognitive modeling.</p>
+      <h1>Building safer, more private, and more human-centered immersive systems.</h1>
+      <p class="lead">I am a PhD student in Computer Science at Kennesaw State University and a Graduate Research Assistant at the Human-Centered Immersive eXperience Lab. My work spans extended reality, human-centered AI, cognitive modeling, cybersickness, engagement, and privacy/security for immersive systems.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="#publications">View publications</a>
-        <a class="btn secondary" href="#research">Explore research</a>
+        <a class="btn primary" href="publications.html">Publications</a>
+        <a class="btn secondary" href="research.html">Research</a>
         <a class="btn secondary" href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-        <a class="btn secondary" href="https://www.linkedin.com/in/nasim-ahmed-cse" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn secondary" href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a>
       </div>
+      <div class="social-line"><a href="mailto:nahmed25@students.kennesaw.edu">Email</a><span>·</span><a href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a><span>·</span><a href="https://orcid.org/0009-0006-5343-3370" target="_blank" rel="noopener">ORCID</a></div>
     </div>
-    <aside class="profile-card">
-      <img src="data:image/jpeg;base64,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" alt="Portrait of Nasim Ahmed">
-      <div class="meta"><strong>Nasim Ahmed</strong><span>Kennesaw State University · Computer Science</span></div>
-    </aside>
+    <aside class="profile-card"><img src="data:image/jpeg;base64,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" alt="Portrait of Nasim Ahmed"><div class="meta"><strong>Nasim Ahmed</strong><span>Computer Science · Kennesaw State University</span></div></aside>
   </div>
 </header>
-
 <main>
-<section id="about">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">About</div><h2>Research at the intersection of people and immersive computing.</h2></div></div>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>About me</h3>
-        <p>My work focuses on understanding and improving how people experience XR systems, with particular emphasis on safety, cognitive state modeling, personalization, trustworthy sensing, and privacy-preserving interaction. I am especially interested in methods that remain practical under real-world sensing and deployment constraints.</p>
-      </div>
-      <div class="card">
-        <h3>Research interests</h3>
-        <div class="tags"><span class="tag">Human-Computer Interaction</span><span class="tag">Extended Reality</span><span class="tag">Human-Centered AI</span><span class="tag">XR Safety</span><span class="tag">Privacy & Security</span><span class="tag">Cognitive Modeling</span><span class="tag">Deep Learning</span><span class="tag">Statistical Analysis</span><span class="tag">Engagement</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="tight"><div class="container stats-grid">
+  <div class="stat"><strong>16</strong><span>publications & manuscripts listed</span></div>
+  <div class="stat"><strong>4</strong><span>IEEE ISMAR 2026 works</span></div>
+  <div class="stat"><strong>2</strong><span>XR hackathon track wins</span></div>
+  <div class="stat"><strong>DARPA</strong><span>sponsored research</span></div>
+</div></section>
 
-<section>
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Updates</div><h2>Recent highlights</h2></div></div>
-    <div class="card news">
-      <div class="news-item"><time>Sep 2026</time><div><strong>IEEE ISMAR 2026</strong> — multiple accepted works spanning personalized cybersickness forecasting, demographic privacy, engagement estimation, and mixed-reality datasets.</div></div>
-      <div class="news-item"><time>Sep 2026</time><div><strong>ACM VRST 2026</strong> — “I’m Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality” accepted.</div></div>
-      <div class="news-item"><time>Sep 2026</time><div><strong>BehavXR’26</strong> — lightning talk accepted: “The Moment Before Disengagement: Predicting When Users Mentally Check Out in XR.”</div></div>
-      <div class="news-item"><time>Apr 2026</time><div><strong>ImmerseGT @ Georgia Tech</strong> — team winner in the Snap Track and Best of Gaming Track.</div></div>
-      <div class="news-item"><time>Nov 2025</time><div><strong>Stanford Immerse the Bay</strong> — team winner in the Meta Track and Afference Track.</div></div>
-      <div class="news-item"><time>Jul 2025</time><div><strong>NSF Travel Grant</strong> — awarded support to participate in the IEEE ISMAR 2025 Doctoral Consortium.</div></div>
-    </div>
+<section><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Research Focus</div><h2>Human-centered XR under real-world constraints.</h2></div><p>I study how immersive systems can better model users, protect sensitive behavioral signals, anticipate safety risks, and adapt to individual differences.</p></div>
+  <div class="grid grid-3">
+    <a class="card link-card" href="research.html#cognitive"><div class="icon-chip">01</div><h3>Cognitive & Behavioral Modeling</h3><p>Continuous cognitive load, engagement, task performance, and interpretable user-state estimation.</p></a>
+    <a class="card link-card" href="research.html#safety"><div class="icon-chip">02</div><h3>XR Safety & Cybersickness</h3><p>Personalized forecasting, probabilistic verification, hazard awareness, and real-time intervention.</p></a>
+    <a class="card link-card" href="research.html#privacy"><div class="icon-chip">03</div><h3>Privacy & Security</h3><p>Reducing demographic leakage and protecting sensitive XR behavioral signals while preserving utility.</p></a>
   </div>
-</section>
+</div></section>
 
-<section id="research">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Research</div><h2>Current and selected projects</h2></div><p>From the original Google Site, reorganized into a research-focused portfolio.</p></div>
-    <div class="grid grid-2">
-      <article class="card"><h3>VeriPro</h3><p>Verified probabilistic cognitive reasoning for tactical mixed-reality systems. My work focuses on cognitive modeling and cybersickness modeling within this DARPA-funded collaborative project.</p><div class="tags"><span class="tag">DARPA</span><span class="tag">Cognitive Modeling</span><span class="tag">Cybersickness</span></div></article>
-      <article class="card"><h3>SafeAR</h3><p>Research on safer AR walking and environmental hazard awareness using Meta Quest 3, progressing from static environment mapping toward dynamic safety-aware interaction.</p><div class="tags"><span class="tag">Meta Quest 3</span><span class="tag">AR Safety</span><span class="tag">Spatial Computing</span></div></article>
-      <article class="card"><h3>Towards Safer Mixed Reality</h3><p>On-device hazard detection with auditory warnings for uncontrolled indoor settings, designed to alert users to spatial risk while maintaining immersion.</p><div class="tags"><span class="tag">IEEE VR</span><span class="tag">Auditory Warnings</span><span class="tag">On-device XR</span></div></article>
-      <article class="card"><h3>Anu — Digital Anubis</h3><p>An immersive remembrance experience combining VR storytelling, AI-mediated dialogue, memory curation, and multimodal interaction, with future concepts for neuro-haptic extensions.</p><div class="tags"><span class="tag">VR Storytelling</span><span class="tag">AI Interaction</span><span class="tag">Multimodal XR</span></div></article>
-    </div>
+<section class="surface-section"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Featured Work</div><h2>Selected recent research.</h2></div><a class="text-link" href="publications.html">All publications →</a></div>
+  <div class="grid grid-2">
+    <article class="feature-card"><span class="badge">IEEE TVCG · ISMAR 2026</span><h3>Who Are You in Virtual Reality?</h3><p>Progressive adversarial privacy for suppressing demographic leakage while preserving downstream XR utility.</p><a href="publications.html">Publication details →</a></article>
+    <article class="feature-card"><span class="badge">ACM VRST 2026</span><h3>I'm Feeling Different</h3><p>Uncertainty-aware cross-domain cognitive load prediction across stationary and locomotion-based VR settings.</p><a href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noopener">DOI →</a></article>
+    <article class="feature-card"><span class="badge">IEEE ISMAR 2026</span><h3>One Size Does Not Fit All</h3><p>Personalized cybersickness forecasting with asymmetric few-shot meta-learning across users and datasets.</p><a href="publications.html">Publication details →</a></article>
+    <article class="feature-card"><span class="badge">Dataset · ISMAR 2026</span><h3>Believe It. Engage It.</h3><p>A mixed-reality dataset covering engagement, cognitive load, physical load, cybersickness, and task performance under cognitive attack.</p><a href="publications.html">Publication details →</a></article>
   </div>
-</section>
+</div></section>
 
-<section id="publications">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Publications</div><h2>Selected publications</h2></div><p>Recent XR work first, followed by earlier publications.</p></div>
-    <div class="card">
-      <div class="pub"><div class="pub-year">2026</div><div><h3>I’m Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality</h3><p><strong>Nasim Ahmed</strong>, Rifatul Islam</p><p class="venue">ACM VRST 2026</p><p><a href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noopener">DOI</a></p></div></div>
-      <div class="pub"><div class="pub-year">2026</div><div><h3>Who Are You in Virtual Reality? Suppressing Demographic Leakage via Progressive Adversarial Privacy</h3><p><strong>Nasim Ahmed</strong>, Rifatul Islam</p><p class="venue">IEEE ISMAR / IEEE TVCG</p></div></div>
-      <div class="pub"><div class="pub-year">2026</div><div><h3>One Size Does Not Fit All: Personalized Cybersickness Forecasting with Asymmetric Few-Shot Meta-Learning</h3><p><strong>Nasim Ahmed</strong> et al.</p><p class="venue">IEEE ISMAR 2026</p></div></div>
-      <div class="pub"><div class="pub-year">2026</div><div><h3>Believe It. Engage It.: A Mixed Reality Dataset of Engagement, Cognitive Load, Physical Load, Cybersickness, and Task Performance Under Cognitive Attack</h3><p><strong>Nasim Ahmed</strong> et al.</p><p class="venue">IEEE ISMAR 2026</p></div></div>
-      <div class="pub"><div class="pub-year">2025</div><div><h3>Human task performance and associated internal states in extended reality: a systematic review of cognitive, psychophysiological, and physiological dimensions</h3><p><strong>Nasim Ahmed</strong> et al.</p><p class="venue">Frontiers in Virtual Reality</p></div></div>
-      <div class="pub"><div class="pub-year">2025</div><div><h3>Probabilistic Verification of Cybersickness in Virtual Reality through Bayesian Networks</h3><p>P. Wu, <strong>N. Ahmed</strong>, et al.</p><p class="venue">IEEE ISMAR 2025</p></div></div>
-      <div class="pub"><div class="pub-year">2025</div><div><h3>Towards Safer Mixed Reality with Auditory Warnings for Uncontrolled Indoor Settings</h3><p><strong>N. Ahmed</strong>, T. Choi, X. Zhang, S. Islam, R. Islam</p><p class="venue">IEEE VRW 2025</p><p><a href="https://doi.org/10.1109/VRW66409.2025.00071" target="_blank" rel="noopener">DOI</a></p></div></div>
-      <div class="pub"><div class="pub-year">2023</div><div><h3>Automatic Classification of Meter in Bangla Poems: A Machine Learning Approach</h3><p><strong>N. Ahmed</strong>, S. T. Aziz, M. A. N. Mojumder, M. A. Mridul</p><p class="venue">ISCON 2023</p><p><a href="https://doi.org/10.1109/ISCON57294.2023.10112039" target="_blank" rel="noopener">DOI</a></p></div></div>
-    </div>
+<section><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Updates</div><h2>Recent highlights</h2></div></div>
+  <div class="news">
+    <div class="news-item"><time>Sep 2026</time><div><strong>IEEE ISMAR 2026</strong><br><span>Multiple accepted works across personalization, privacy, engagement, and XR datasets.</span></div></div>
+    <div class="news-item"><time>Sep 2026</time><div><strong>BehavXR’26</strong><br><span>Lightning talk accepted: “The Moment Before Disengagement: Predicting When Users Mentally Check Out in XR.”</span></div></div>
+    <div class="news-item"><time>Apr 2026</time><div><strong>ImmerseGT 2026</strong><br><span>Gaming Track winner and Snap AR Track recognition for HeistAR.</span></div></div>
+    <div class="news-item"><time>2026</time><div><strong>Outstanding PhD Student Research Award</strong><br><span>Department of Computer Science, Kennesaw State University.</span></div></div>
   </div>
-</section>
-
-<section id="experience">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Experience</div><h2>Education & professional experience</h2></div></div>
-    <div class="grid grid-2">
-      <div class="timeline">
-        <div class="card"><div class="date">2025 — Present</div><h3>PhD in Computer Science</h3><p>Kennesaw State University</p></div>
-        <div class="card"><div class="date">Fall 2024</div><h3>Master of Science study in Computer Science</h3><p>Kennesaw State University</p></div>
-        <div class="card"><div class="date">2018 — 2022</div><h3>B.Sc. in Computer Science and Engineering</h3><p>Shahjalal University of Science and Technology · Academic Distinction</p></div>
-      </div>
-      <div class="timeline">
-        <div class="card"><div class="date">2024 — Present</div><h3>Graduate Research Assistant · HiX Lab</h3><p>Research in XR systems, safety, cognitive modeling, privacy, security, and human-centered AI.</p></div>
-        <div class="card"><div class="date">2023 — 2024</div><h3>Lecturer · Department of CSE</h3><p>Sylhet International University, Bangladesh</p></div>
-        <div class="card"><div class="date">Previous</div><h3>SQA Intern / Remote Technical Intern</h3><p>Software quality assurance, testing, scraping, and technical support experience.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="teaching">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Teaching</div><h2>Teaching experience</h2></div></div>
-    <div class="grid grid-2">
-      <div class="card"><h3>Database Management System (CSE 321)</h3><p>Foundations of database design, management, relational concepts, and practical database systems.</p></div>
-      <div class="card"><h3>Statistics and Probability (MTH 301)</h3><p>Core statistical and probabilistic reasoning with applications to engineering, data science, and research.</p></div>
-      <div class="card"><h3>Discrete Mathematics (CSE 201)</h3><p>Mathematical reasoning and structures for computer science, connecting theory to computational problem solving.</p></div>
-      <div class="card"><h3>Data Structure (CSE 205)</h3><p>Core data structures, efficient organization of data, algorithmic thinking, and hands-on implementation.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="awards">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Awards</div><h2>Selected honors</h2></div></div>
-    <div class="grid grid-3">
-      <div class="card"><h3>Outstanding PhD Student Research Award</h3><p>Department of Computer Science, Kennesaw State University · 2026</p></div>
-      <div class="card"><h3>ImmerseGT @ Georgia Tech</h3><p>Winner — Snap Track and Best of Gaming Track · 2026</p></div>
-      <div class="card"><h3>Stanford Immerse the Bay</h3><p>Winner — Meta Track and Afference Track · 2025</p></div>
-      <div class="card"><h3>NSF Travel Grant</h3><p>IEEE ISMAR Doctoral Consortium · 2025</p></div>
-      <div class="card"><h3>Academic Distinction</h3><p>Top academic recognition, Department of CSE, SUST · 2023</p></div>
-      <div class="card"><h3>Competitive Programming</h3><p>ICPC contestant and coach; solved 1,200+ online-judge problems.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="resources">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Resources</div><h2>XR publication resources</h2></div><p>Links preserved from the Google Site; deadlines change, so official venue pages are the source of truth.</p></div>
-    <div class="grid grid-3">
-      <div class="card resource"><h3>ACM UIST</h3><p>Human-computer interaction and user interface systems.</p><p><a href="https://uist.acm.org/" target="_blank" rel="noopener">Official site →</a></p></div>
-      <div class="card resource"><h3>IEEE VR</h3><p>Virtual reality and 3D user interfaces.</p><p><a href="https://ieeevr.org/" target="_blank" rel="noopener">Official site →</a></p></div>
-      <div class="card resource"><h3>PRESENCE</h3><p>Virtual and augmented reality journal.</p><p><a href="https://direct.mit.edu/pvar" target="_blank" rel="noopener">Journal →</a></p></div>
-      <div class="card resource"><h3>Virtual Reality</h3><p>Springer journal focused on immersive technologies.</p><p><a href="https://link.springer.com/journal/10055" target="_blank" rel="noopener">Journal →</a></p></div>
-      <div class="card resource"><h3>IEEE TVCG</h3><p>IEEE Transactions on Visualization and Computer Graphics.</p><p><a href="https://www.computer.org/csdl/journal/tg" target="_blank" rel="noopener">Journal →</a></p></div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Gallery</div><h2>Research community & events</h2></div></div>
-    <div class="gallery-grid">
-      <div class="gallery-card"><div><span class="small">2025</span><h3>Stanford XR · Immerse the Bay</h3><p class="small">Hackathon and XR community highlights.</p></div></div>
-      <div class="gallery-card"><div><span class="small">Kennesaw State University</span><h3>Allen–Davidson–Coleman XR Makerspace</h3><p class="small">Grand opening and immersive technology community.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <div class="section-head"><div><div class="eyebrow">Contact</div><h2>Let’s connect.</h2></div></div>
-    <div class="card">
-      <p>Academic email: <a href="mailto:nahmed25@students.kennesaw.edu">nahmed25@students.kennesaw.edu</a></p>
-      <p>Personal email: <a href="mailto:nasim.cse2k17@gmail.com">nasim.cse2k17@gmail.com</a></p>
-      <p><a href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://www.linkedin.com/in/nasim-ahmed-cse" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a> · <a href="https://orcid.org/0009-0006-5343-3370" target="_blank" rel="noopener">ORCID</a></p>
-      <p class="small">For privacy, this site does not publish a residential address or phone number.</p>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container">© <span id="year"></span> Nasim Ahmed. Built with GitHub Pages.</div>
-</footer>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+</div></section>
+</main><footer><div class="container footer-grid"><div><strong>Nasim Ahmed</strong><p class="small">PhD Student · Human-Centered Immersive eXperience Lab · Kennesaw State University</p></div><div class="footer-links"><a href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><a href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a><a href="https://orcid.org/0009-0006-5343-3370" target="_blank" rel="noopener">ORCID</a></div></div><div class="container small footer-bottom">© <span id="year"></span> Nasim Ahmed.</div></footer><script src="assets/js/main.js"></script></body></html>
