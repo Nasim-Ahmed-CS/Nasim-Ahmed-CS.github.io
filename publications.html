@@ -154,6 +154,188 @@
   .pub-stat.total{grid-column:1/-1}
   .pub-stat{min-height:126px}
 }
+
+/* Publications page layout polish */
+.pub-layout{
+  grid-template-columns:190px minmax(0,1fr);
+  gap:28px;
+  align-items:start;
+}
+.pub-layout>.toc{
+  align-self:start;
+  position:sticky;
+  top:88px;
+  height:auto!important;
+  min-height:0!important;
+  padding:14px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+.pub-layout>.toc strong{
+  display:block;
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--subtle);
+  margin:2px 4px 10px;
+}
+.pub-layout>.toc a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 10px;
+  border-radius:10px;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--muted);
+  transition:.18s ease;
+}
+.pub-layout>.toc a::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#cbd5e1;
+  flex:0 0 7px;
+}
+.pub-layout>.toc a:nth-of-type(1)::before{background:#2563eb}
+.pub-layout>.toc a:nth-of-type(2)::before{background:#dc2626}
+.pub-layout>.toc a:nth-of-type(3)::before{background:#7c3aed}
+.pub-layout>.toc a:hover{
+  background:var(--blue-soft);
+  color:var(--blue);
+  transform:translateX(2px);
+}
+
+.pub-layout>div{min-width:0}
+.section-block{
+  position:relative;
+  margin-bottom:28px;
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--card);
+  box-shadow:0 10px 30px rgba(15,23,42,.055);
+  overflow:hidden;
+}
+.section-block::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  background:var(--section-accent,#2563eb);
+}
+#journals{--section-accent:#2563eb}
+#review{--section-accent:#dc2626}
+#conferences{--section-accent:#7c3aed}
+
+.section-block .section-head{
+  margin:0 0 14px;
+  padding:0 0 14px;
+  border-bottom:1px solid var(--border);
+}
+.section-block .section-head h2{
+  margin:.18rem 0 0;
+  font-size:1.55rem;
+  letter-spacing:-.025em;
+}
+.section-block .section-head .eyebrow{
+  color:var(--section-accent);
+  font-size:.69rem;
+}
+
+.section-block .pub-list{
+  display:grid;
+  gap:10px;
+}
+.section-block .pub-card{
+  display:grid;
+  grid-template-columns:72px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding:15px 16px;
+  border:1px solid transparent;
+  border-radius:14px;
+  background:var(--bg);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
+}
+.section-block .pub-card:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb,var(--section-accent) 28%,var(--border));
+  box-shadow:0 10px 22px rgba(15,23,42,.07);
+  background:var(--card);
+}
+.section-block .pub-year{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:58px;
+  min-height:30px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--section-accent) 10%,white);
+  border:1px solid color-mix(in srgb,var(--section-accent) 24%,white);
+  color:var(--section-accent);
+  font-size:.75rem;
+  font-weight:850;
+}
+.section-block .pub-card h3{
+  margin:0 0 6px;
+  font-size:.98rem;
+  line-height:1.42;
+  color:var(--text);
+}
+.section-block .pub-card p{
+  margin:2px 0;
+  font-size:.82rem;
+  line-height:1.52;
+  color:var(--muted);
+}
+.section-block .pub-card .venue{
+  margin-top:6px;
+  color:var(--text);
+  font-weight:700;
+}
+#review .pub-card.highlight{
+  border:1px solid rgba(220,38,38,.18);
+  background:linear-gradient(135deg,rgba(254,242,242,.95),rgba(255,255,255,.98));
+  box-shadow:none;
+}
+#review .pub-card.highlight:hover{
+  border-color:rgba(220,38,38,.32);
+}
+[data-theme="dark"] .pub-layout>.toc{
+  background:linear-gradient(180deg,var(--card),rgba(15,23,42,.92));
+}
+[data-theme="dark"] .section-block .pub-year{
+  background:color-mix(in srgb,var(--section-accent) 16%,var(--card));
+  border-color:color-mix(in srgb,var(--section-accent) 35%,var(--border));
+}
+[data-theme="dark"] #review .pub-card.highlight{
+  background:linear-gradient(135deg,rgba(127,29,29,.16),rgba(21,28,44,.98));
+}
+@media(max-width:1024px){
+  .pub-layout{grid-template-columns:1fr}
+  .pub-layout>.toc{
+    position:static;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    padding:10px;
+  }
+  .pub-layout>.toc strong{width:100%;margin-bottom:2px}
+  .pub-layout>.toc a{background:var(--pill)}
+}
+@media(max-width:620px){
+  .section-block{padding:16px;border-radius:16px}
+  .section-block .pub-card{grid-template-columns:1fr;gap:8px;padding:14px}
+  .section-block .pub-year{width:max-content}
+  .section-block .section-head h2{font-size:1.35rem}
+}
+
 </style></head><body>
 <nav class="site-nav">
   <div class="container nav-wrap">
