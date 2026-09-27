@@ -1,8 +1,4 @@
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');
-    if(id.length>1){const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}}
-  });
-});
-document.getElementById('year').textContent=new Date().getFullYear();
+const year=document.getElementById('year'); if(year) year.textContent=new Date().getFullYear();
+const toggle=document.querySelector('.menu-toggle'); const links=document.querySelector('.nav-links');
+if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});}
