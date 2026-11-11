@@ -132,21 +132,36 @@
       font-size: clamp(17px, 2vw, 20px);
       line-height: 1.65;
     }
-    .author-line {
+    .author-profiles {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px 12px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .author-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: #34423a;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 650;
     }
-    .author-line .dot { color: #9aa198; }
-    .author-line .venue {
+    .author-profile img {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+    .author-profile .professor-photo { object-position: center 28%; }
+    .author-separator { color: var(--muted); font-size: 12px; }
+    .masthead-venue {
+      margin: 12px 0 0;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 500;
+      line-height: 1.55;
     }
     .paper-masthead {
       padding: 28px 36px;
@@ -554,7 +569,9 @@
       .nav-links { gap: 9px; }
       .nav-links .nav-paper { padding: 7px 10px; }
       .nav-paper span { display: none; }
-      .author-line { gap: 7px 11px; font-size: 12px; }
+      .author-profiles { gap: 8px; }
+      .author-profile { gap: 8px; font-size: 12px; }
+      .author-profile img { width: 40px; height: 40px; }
       .affiliation-logos { gap: 12px; }
       .affiliation-logos .hix-logo { max-width: 185px; }
       .affiliation-logos img { height: 36px; }
@@ -590,11 +607,18 @@
         <div class="masthead-layout">
           <div>
             <h1 id="page-title">I'm Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality</h1>
-            <p class="author-line">
-              <span>Nasim Ahmed and Rifatul Islam</span>
-              <span class="dot" aria-hidden="true">·</span>
-              <span class="venue">32nd ACM Symposium on Virtual Reality Software and Technology · 2026</span>
-            </p>
+            <div class="author-profiles" aria-label="Paper authors">
+              <div class="author-profile">
+                <img src="../../../assets/images/profile.png" width="600" height="600" alt="Nasim Ahmed">
+                <span>Nasim Ahmed</span>
+              </div>
+              <span class="author-separator" aria-hidden="true">and</span>
+              <div class="author-profile">
+                <img class="professor-photo" src="rifatul-islam.jpg" width="56" height="56" alt="Rifatul Islam">
+                <span>Rifatul Islam</span>
+              </div>
+            </div>
+            <p class="masthead-venue">32nd ACM Symposium on Virtual Reality Software and Technology · 2026</p>
             <div class="affiliation-logos" aria-label="Research affiliations">
               <img class="hix-logo" src="hix-lab.png" width="600" height="180" alt="HiX Lab — Human-Centered Immersive eXperience">
               <img class="ksu-logo" src="ksu-logo.png" width="1080" height="1080" alt="Kennesaw State University">
