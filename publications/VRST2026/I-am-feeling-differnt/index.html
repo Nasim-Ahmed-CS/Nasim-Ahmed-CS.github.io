@@ -341,16 +341,19 @@
 
     .figure-frame {
       margin: 0;
-      padding: 14px;
+      padding: 10px;
+      overflow: hidden;
       border: 1px solid var(--line);
+      border-radius: 14px;
       background: #fff;
+      box-shadow: 0 8px 24px rgb(23 36 31 / 5%);
     }
-    .figure-frame img { width: 100%; height: auto; }
+    .figure-frame img { width: 100%; height: auto; border-radius: 9px; }
     .figure-frame figcaption {
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      padding: 12px 4px 1px;
+      padding: 12px 4px 2px;
       color: #67736b;
       font-size: 11px;
       line-height: 1.6;
@@ -363,6 +366,28 @@
       gap: 18px;
       align-items: start;
     }
+    .uncertainty-figures { margin-top: 18px; }
+    .uncertainty-note {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) 1.2fr;
+      align-items: center;
+      gap: 28px;
+      margin-top: 18px;
+      padding: 22px 26px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--green);
+      border-radius: 12px;
+      background: rgb(255 255 255 / 45%);
+    }
+    .uncertainty-note h3 {
+      margin: 8px 0 0;
+      font-family: var(--display);
+      font-size: clamp(22px, 2.6vw, 29px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+    }
+    .uncertainty-note p { margin: 0; color: #58645d; font-size: 13px; line-height: 1.8; }
 
     .results-section { background: var(--green-dark); color: #f7f6ef; }
     .results-section .section-index { color: #c3d0c4; }
@@ -560,6 +585,9 @@
       .finding-cards { grid-template-columns: 1fr; }
       .finding { min-height: auto; }
       .figure-split { grid-template-columns: 1fr; }
+      .figure-frame figcaption { flex-direction: column; gap: 4px; }
+      .figure-frame figcaption span { flex: auto; }
+      .uncertainty-note { grid-template-columns: 1fr; gap: 12px; padding: 20px; }
       .uncertainty-layout { grid-template-columns: 1fr; gap: 22px; padding: 23px; }
       .uncertainty-stat { padding: 18px 0 0; border-left: 0; border-top: 1px solid #c9cfc1; }
       .paper-card { grid-template-columns: 1fr; }
@@ -804,14 +832,14 @@
             <span>Percent confidence bands from ±1σ and ±2σ around the predicted mean.</span>
           </div>
         </div>
-        <figure class="figure-frame" style="margin-top:18px">
-          <img src="vrst26-31-fig6.jpg" width="664" height="316" loading="lazy" alt="Ground-truth and predicted normalized cognitive load over 15 minutes, with shaded 68% and 95% predictive uncertainty bands.">
-          <figcaption>
-            <strong>Predicted cognitive load with its uncertainty bands.</strong>
-            <span>FIG. 06 / PREDICTIVE UNCERTAINTY</span>
-          </figcaption>
-        </figure>
-        <div class="figure-split" style="margin-top:18px">
+        <div class="figure-split uncertainty-figures">
+          <figure class="figure-frame">
+            <img src="vrst26-31-fig6.jpg" width="664" height="316" loading="lazy" alt="Ground-truth and predicted normalized cognitive load over 15 minutes, with shaded 68% and 95% predictive uncertainty bands.">
+            <figcaption>
+              <strong>Predicted cognitive load with its uncertainty bands.</strong>
+              <span>FIG. 06 / PREDICTIVE UNCERTAINTY</span>
+            </figcaption>
+          </figure>
           <figure class="figure-frame">
             <img src="vrst26-31-fig5.jpg" width="616" height="316" loading="lazy" alt="MAE comparison with and without the demographic embedding for HPO-CLD, HPO-CLD to Maze, Maze, and Maze to HPO-CLD; the full model has lower MAE in every setting.">
             <figcaption>
@@ -819,12 +847,14 @@
               <span>FIG. 05 / EMBEDDING</span>
             </figcaption>
           </figure>
-          <aside class="uncertainty-copy" style="align-self:center;padding:12px 8px">
+        </div>
+        <aside class="uncertainty-note">
+          <div>
             <div class="eyebrow">A useful signal for adaptive VR</div>
             <h3>Know when to pause, adjust, or ask.</h3>
-            <p>When uncertainty rises, an immersive system could avoid overreacting to a noisy estimate—waiting for clearer signals or choosing a gentler adaptation. The prediction is a cue for the experience, not a verdict about the person.</p>
-          </aside>
-        </div>
+          </div>
+          <p>When uncertainty rises, an immersive system could avoid overreacting to a noisy estimate—waiting for clearer signals or choosing a gentler adaptation. The prediction is a cue for the experience, not a verdict about the person.</p>
+        </aside>
       </div>
     </section>
 
