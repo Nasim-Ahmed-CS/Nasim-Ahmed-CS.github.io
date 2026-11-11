@@ -1,11 +1,24 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Professional service, talks, volunteering, and academic community activities of Nasim Ahmed.">
+<meta name="description" content="Professional service, talks, awards, and academic community activities of Nasim Ahmed.">
 <meta name="author" content="Nasim Ahmed"><meta name="theme-color" content="#173f8f">
-<title>Service | Nasim Ahmed</title>
+<title>Service &amp; Awards | Nasim Ahmed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<style>
+.service-card h3{margin:.8rem 0 .35rem;font-size:1.15rem}
+.service-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--blue-soft);color:var(--blue)}
+.service-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.service-card .service-item:last-child{border-bottom:0}
+.award-visual-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1.25rem;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.award-visual-row img,.award-placeholder{display:grid;width:100%;height:110px;place-items:center;object-fit:contain;border-radius:12px;background:var(--pill);color:var(--blue)}
+.award-placeholder svg{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.award-visual-copy{display:grid;grid-template-columns:70px 1fr;gap:1rem;align-items:start}
+.award-visual-copy h3{margin:0;font-size:1.08rem}
+.award-visual-copy p{margin:.25rem 0;color:var(--muted)}
+@media(max-width:680px){.award-visual-row{grid-template-columns:1fr}.award-visual-row img,.award-placeholder{max-width:260px}.award-visual-copy{grid-template-columns:60px 1fr}}
+</style>
 </head><body>
 <nav class="site-nav">
   <div class="container nav-wrap">
@@ -13,21 +26,31 @@
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a  href="index.html">Home</a>
-      <a  href="research.html">Research</a>
-      <a  href="publications.html">Publications</a>
+      <a  href="publications.html#research">Research &amp; Publications</a>
       <a  href="projects.html">Projects</a>
-      <a  href="experience.html">Experience</a>
-      <a  href="teaching.html">Teaching</a>
-      <a class="active" href="service.html">Service</a>
-      <a  href="awards.html">Awards</a>
+      <a  href="experience.html#teaching">Experience &amp; Teaching</a>
+      <a class="active" href="service.html">Service &amp; Awards</a>
       <a  href="contact.html">Contact</a>
     </div>
   </div>
 </nav>
-<main class="page-main"><section class="page-hero"><div class="container"><div class="eyebrow">Service</div><h1>Professional service & community</h1></div></section>
-<section><div class="container grid grid-2">
-<div class="card"><h2>Peer review</h2><div class="service-item"><strong>Reviewer</strong><span>IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR 2027)</span></div><div class="service-item"><strong>Reviewer</strong><span>ACM Symposium on Virtual Reality Software and Technology (VRST 2026)</span></div></div>
-<div class="card"><h2>Selected talk</h2><div class="service-item"><strong>BehavXR’26 · IEEE ISMAR 2026</strong><span>“The Moment Before Disengagement: Predicting When Users Mentally Check Out in XR” · Lightning Talk · Bari, Italy</span></div></div>
-<div class="card"><h2>Conference volunteering</h2><div class="service-item"><strong>IEEE VR 2025</strong><span>Conference Volunteer · Virtual</span></div><div class="service-item"><strong>AWE USA 2024</strong><span>Conference Volunteer · Long Beach, California</span></div></div>
-<div class="card"><h2>Competitive programming</h2><p>Former ICPC competitor and later coach/mentor, with extensive online-judge problem-solving experience and university-team training.</p></div>
-</div></section></main><footer><div class="container footer-grid"><div><strong>Nasim Ahmed</strong><p class="small">PhD Student · Human-Centered Immersive eXperience Lab · Kennesaw State University</p></div><div class="footer-links"><a href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><a href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a><a href="https://orcid.org/0009-0006-5343-3370" target="_blank" rel="noopener">ORCID</a></div></div><div class="container small footer-bottom">© <span id="year"></span> Nasim Ahmed.</div></footer><script src="assets/js/main.js"></script></body></html>
+<main class="page-main">
+<section class="page-hero"><div class="container"><div class="eyebrow">Service &amp; recognition</div><h1>Service &amp; awards</h1><p class="lead narrow">Peer review, conference participation, mentoring, and recognition across research and immersive technology.</p><div class="primary-actions"><a class="btn-primary" href="#service">Professional service</a><a class="btn-secondary" href="#awards">Honors &amp; awards</a></div></div></section>
+<section id="service"><div class="container">
+<div class="section-head"><div><div class="eyebrow">Community</div><h2>Professional service</h2><p>Contributions to scholarly venues, XR communities, and student development.</p></div></div>
+<div class="grid grid-2">
+<article class="card service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5c0 5 3.2 8.3 7.5 10 4.3-1.7 7.5-5 7.5-10V6L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg></span><h3>Peer review</h3><div class="service-item"><strong>Reviewer</strong><span>IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR 2027)</span></div><div class="service-item"><strong>Reviewer</strong><span>ACM Symposium on Virtual Reality Software and Technology (VRST 2026)</span></div></article>
+<article class="card service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg></span><h3>Selected talk</h3><div class="service-item"><strong>BehavXR’26 · IEEE ISMAR 2026</strong><span>“The Moment Before Disengagement: Predicting When Users Mentally Check Out in XR” · Lightning Talk · Bari, Italy</span></div></article>
+<article class="card service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.5-4 11.5-4 12 0M14 18c1-2 6-2 7 1"/></svg></span><h3>Conference volunteering</h3><div class="service-item"><strong>IEEE VR 2025</strong><span>Conference Volunteer · Virtual</span></div><div class="service-item"><strong>AWE USA 2024</strong><span>Conference Volunteer · Long Beach, California</span></div></article>
+<article class="card service-card"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5l8-2 8 2v14l-8 2-8-2Z"/><path d="m4 5 8 2 8-2M12 7v14M8 12h.01M16 12h.01"/></svg></span><h3>Competitive programming</h3><p>Former ICPC competitor and later coach/mentor, with extensive online-judge problem-solving experience and university-team training.</p></article>
+</div></div></section>
+<section id="awards"><div class="container award-list">
+<div class="section-head"><div><div class="eyebrow">Recognition</div><h2>Honors &amp; awards</h2><p>Research, academic, and immersive-technology recognition.</p></div></div>
+<article class="award-visual-row"><img src="assets/images/award.png" alt="Nasim Ahmed holding the Outstanding PhD Student Research Award"><div class="award-visual-copy"><div class="award-year">2026</div><div><h3>Outstanding PhD Student Research Award</h3><p>Department of Computer Science · Kennesaw State University.</p></div></div></article>
+<article class="award-visual-row"><img src="assets/images/Awards/ImmerseGT.jpg" alt="ImmerseGT award recognition"><div class="award-visual-copy"><div class="award-year">2026</div><div><h3>ImmerseGT — Gaming Track Winner</h3><p>Georgia Tech · HeistAR multiplayer augmented-reality game.</p></div></div></article>
+<article class="award-visual-row"><img src="assets/images/Awards/snap.jpg" alt="Snap AR Track recognition at ImmerseGT 2026"><div class="award-visual-copy"><div class="award-year">2026</div><div><h3>Snap AR Track Recognition</h3><p>ImmerseGT 2026 · Snap Spectacles / augmented-reality track.</p></div></div></article>
+<article class="award-visual-row"><img src="assets/images/Awards/stanfordXR.jpg" alt="Stanford Immerse the Bay XR Hackathon award recognition"><div class="award-visual-copy"><div class="award-year">2025</div><div><h3>Meta Track &amp; Afference Track Winner</h3><p>Stanford Immerse the Bay XR Hackathon · Anu / Digital Anubis.</p></div></div></article>
+<article class="award-visual-row"><img src="assets/images/Awards/nsf.jpeg" alt="NSF Travel Grant recognition for IEEE ISMAR 2025"><div class="award-visual-copy"><div class="award-year">2025</div><div><h3>NSF Travel Grant Awardee</h3><p>IEEE ISMAR 2025 · support for Doctoral Consortium and cybersickness research participation.</p></div></div></article>
+<article class="award-visual-row"><span class="award-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 14.8 9l6.5.8-4.8 4.5 1.2 6.4-5.7-3.2-5.7 3.2 1.2-6.4-4.8-4.5L9.2 9 12 3Z"/></svg></span><div class="award-visual-copy"><div class="award-year">2023</div><div><h3>Academic Distinction</h3><p>Ranked among the top students in the Department of Computer Science and Engineering, SUST.</p></div></div></article>
+</div></section>
+</main><footer><div class="container footer-grid"><div><strong>Nasim Ahmed</strong><p class="small">PhD Student · Human-Centered Immersive eXperience Lab · Kennesaw State University</p></div><div class="footer-links"><a href="https://scholar.google.com/citations?user=EDgwp6sAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><a href="https://github.com/Nasim-Ahmed-CS" target="_blank" rel="noopener">GitHub</a><a href="https://orcid.org/0009-0006-5343-3370" target="_blank" rel="noopener">ORCID</a></div></div><div class="container small footer-bottom">© <span id="year"></span> Nasim Ahmed.</div></footer><script src="assets/js/main.js"></script></body></html>
