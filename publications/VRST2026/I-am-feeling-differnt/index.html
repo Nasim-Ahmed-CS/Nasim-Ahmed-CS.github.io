@@ -360,6 +360,60 @@
     }
     .figure-frame figcaption strong { color: var(--ink); font-weight: 650; }
     .figure-frame figcaption span { flex: 0 0 auto; color: var(--green); font-family: var(--mono); font-size: 10px; }
+    .teaser-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    .teaser-heading h2 {
+      max-width: 720px;
+      margin: 10px 0 0;
+      font-family: var(--display);
+      font-size: clamp(30px, 4.2vw, 48px);
+      font-weight: 400;
+      letter-spacing: -.05em;
+      line-height: 1.1;
+    }
+    .teaser-heading p {
+      max-width: 350px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .teaser-frame {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #0b100d;
+      box-shadow: 0 12px 32px rgb(23 36 31 / 9%);
+    }
+    .teaser-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #101713;
+    }
+    .teaser-frame figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 18px;
+      border-top: 1px solid rgb(255 255 255 / 11%);
+      background: var(--green-dark);
+      color: #d5dfd6;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .teaser-frame figcaption span:last-child {
+      color: #c3d0c4;
+      font-family: var(--mono);
+      font-size: 10px;
+    }
     .figure-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -561,7 +615,7 @@
       .header-inner { min-height: 62px; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
-      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .nav-links a:nth-child(3), .nav-links a:nth-child(4), .nav-links a:nth-child(5) { display: none; }
       .hero { padding: 30px 0 45px; }
       .paper-masthead { padding: 22px; }
       .masthead-layout { grid-template-columns: 1fr; gap: 20px; }
@@ -573,6 +627,8 @@
       .metric:first-child { padding-left: 14px; }
       .metric-value { font-size: 34px; }
       .section { padding: 70px 0; }
+      .teaser-heading { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+      .teaser-frame figcaption { flex-direction: column; gap: 4px; padding: 11px 14px; }
       .section-heading { grid-template-columns: 1fr; gap: 12px; margin-bottom: 30px; }
       .section-index { padding-top: 0; }
       .abstract-grid, .attention-context { grid-template-columns: 1fr; gap: 30px; }
@@ -619,6 +675,7 @@
         <span class="wordmark-context">VRST '26</span>
       </a>
       <nav class="nav-links" aria-label="Page navigation">
+        <a href="#teaser">Teaser</a>
         <a href="#overview">Overview</a>
         <a href="#method">Method</a>
         <a href="#results">Results</a>
@@ -676,6 +733,28 @@
           <span class="metric-value">±2σ</span>
           <span class="metric-label">Predictive uncertainty<br>95% confidence interval</span>
         </div>
+      </div>
+    </section>
+
+    <section class="section teaser-section" id="teaser" aria-labelledby="teaser-title">
+      <div class="wrap">
+        <div class="teaser-heading">
+          <div>
+            <span class="eyebrow">VRST '26 · Paper teaser</span>
+            <h2 id="teaser-title">The research, in motion.</h2>
+          </div>
+          <p>A short visual introduction to the cross-domain VR study, its model, and its main results.</p>
+        </div>
+        <figure class="teaser-frame">
+          <video controls playsinline preload="metadata" width="1920" height="1080" poster="teaser-poster.jpg" aria-label="Paper teaser video for I'm Feeling Different">
+            <source src="VRST26_Nasim_Ahmed_Teaser.mp4" type="video/mp4">
+            Your browser does not support HTML video. <a href="VRST26_Nasim_Ahmed_Teaser.mp4">Open the teaser video.</a>
+          </video>
+          <figcaption>
+            <span>I'm Feeling Different · VRST '26</span>
+            <span>43 sec · 1920 × 1080</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
