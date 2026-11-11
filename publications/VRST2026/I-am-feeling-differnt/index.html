@@ -18,7 +18,7 @@
       --green-dark: #143b2d;
       --lime: #d4ef8c;
       --orange: #e7a36c;
-      --display: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --display: "Segoe UI", Arial, sans-serif;
       --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
       --content: 1120px;
@@ -61,25 +61,21 @@
     .wordmark {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
+      gap: 0;
       text-decoration: none;
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: .02em;
       white-space: nowrap;
     }
-    .mark {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--green-dark);
-      color: var(--lime);
-      font-family: var(--display);
-      font-size: 15px;
-      font-weight: 400;
-      letter-spacing: -.08em;
+    .wordmark-name { color: var(--ink); letter-spacing: 0; }
+    .wordmark-context {
+      margin-left: 12px;
+      padding-left: 12px;
+      border-left: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
     }
     .nav-links { display: flex; align-items: center; gap: 25px; }
     .nav-links a {
@@ -100,21 +96,12 @@
 
     .hero { padding: 38px 0 54px; }
     .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-block;
       color: var(--green);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before {
-      width: 25px;
-      height: 1px;
-      background: currentColor;
-      content: "";
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .01em;
     }
     .hero h1 {
       max-width: 860px;
@@ -255,13 +242,24 @@
       margin-bottom: 44px;
     }
     .section-index {
-      padding-top: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 8px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .section-number {
       color: var(--green);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 750;
+    }
+    .section-label {
+      padding-left: 10px;
+      border-left: 1px solid var(--line);
     }
     .section h2 {
       max-width: 760px;
@@ -367,7 +365,9 @@
     }
 
     .results-section { background: var(--green-dark); color: #f7f6ef; }
-    .results-section .section-index { color: var(--lime); }
+    .results-section .section-index { color: #c3d0c4; }
+    .results-section .section-number { color: var(--lime); }
+    .results-section .section-label { border-color: rgb(255 255 255 / 24%); }
     .results-section .section-lede { color: #c3d0c4; }
     .results-section .section-heading { margin-bottom: 37px; }
     .results-callout {
@@ -587,8 +587,8 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="../../../" aria-label="Back to Nasim Ahmed's portfolio">
-        <span class="mark" aria-hidden="true">IF</span>
-        <span>Nasim Ahmed / VRST '26</span>
+        <span class="wordmark-name">Nasim Ahmed</span>
+        <span class="wordmark-context">VRST '26</span>
       </a>
       <nav class="nav-links" aria-label="Page navigation">
         <a href="#overview">Overview</a>
@@ -603,7 +603,7 @@
   <main id="top">
     <section class="hero wrap" aria-labelledby="page-title">
       <div class="paper-masthead">
-        <div class="eyebrow">Conference paper · VRST '26</div>
+        <div class="eyebrow">VRST '26 · Conference paper</div>
         <div class="masthead-layout">
           <div>
             <h1 id="page-title">I'm Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality</h1>
@@ -654,7 +654,7 @@
     <section class="section" id="overview">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">01 / The question</div>
+          <div class="section-index"><span class="section-number">01</span><span class="section-label">Research question</span></div>
           <div>
             <h2>Can a model read cognitive load when the context shifts?</h2>
             <p class="section-lede">A system trained in a quiet, seated VR session should not lose its footing when a person starts moving.</p>
@@ -689,7 +689,7 @@
     <section class="section method-section" id="method">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">02 / The method</div>
+          <div class="section-index"><span class="section-number">02</span><span class="section-label">Model architecture</span></div>
           <div>
             <h2>Two signal streams. One calibrated estimate.</h2>
             <p class="section-lede">Parallel temporal encoders learn from eye tracking and heart rate, then attention and a learnable gender embedding help the model adapt before it estimates a distribution over cognitive load.</p>
@@ -725,7 +725,7 @@
     <section class="section results-section" id="results">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">03 / The results</div>
+          <div class="section-index"><span class="section-number">03</span><span class="section-label">Evaluation results</span></div>
           <div>
             <h2>Transfer is the test that matters.</h2>
             <p class="section-lede">Evaluated in both directions between stationary HPO-CLD and real-walking Maze data, the method outperforms standard CNN, LSTM, and transformer baselines.</p>
@@ -765,7 +765,7 @@
     <section class="section" aria-labelledby="attention-title">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">04 / Looking inside</div>
+          <div class="section-index"><span class="section-number">04</span><span class="section-label">Model interpretation</span></div>
           <div>
             <h2 id="attention-title">Attention shifts with the experience.</h2>
             <p class="section-lede">The model can change how it weighs physiological and eye-tracking signals over time rather than treating each channel as equally reliable.</p>
@@ -787,7 +787,7 @@
     <section class="section method-section" id="uncertainty">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">05 / Knowing what we don't know</div>
+          <div class="section-index"><span class="section-number">05</span><span class="section-label">Predictive uncertainty</span></div>
           <div>
             <h2>A prediction should come with a sense of confidence.</h2>
             <p class="section-lede">A point estimate alone hides when a model is unsure. The probabilistic formulation predicts a mean and variance so adaptive experiences can respond more thoughtfully.</p>
@@ -831,7 +831,7 @@
     <section class="section" id="paper">
       <div class="wrap">
         <div class="section-heading">
-          <div class="section-index">06 / Read & cite</div>
+          <div class="section-index"><span class="section-number">06</span><span class="section-label">Paper &amp; citation</span></div>
           <div>
             <h2>Take the research further.</h2>
             <p class="section-lede">The full paper includes the dataset setup, model details, and experimental evaluation.</p>
