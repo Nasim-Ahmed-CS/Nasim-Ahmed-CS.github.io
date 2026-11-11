@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ed">
+  <meta name="description" content="I'm Feeling Different: uncertainty-aware cross-domain cognitive load prediction in virtual reality by Nasim Ahmed and Rifatul Islam.">
+  <title>I'm Feeling Different — VRST '26</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f3ed;
+      --paper-deep: #ebeae1;
+      --ink: #17241f;
+      --muted: #64716b;
+      --line: #d7d9ce;
+      --green: #245c45;
+      --green-dark: #143b2d;
+      --lime: #d4ef8c;
+      --orange: #e7a36c;
+      --serif: Georgia, serif;
+      --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      --content: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #9cbe52;
+      outline-offset: 4px;
+    }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid rgb(23 36 31 / 10%);
+      background: rgb(244 243 237 / 94%);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: var(--lime);
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -.08em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a {
+      color: #53615a;
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links .nav-paper {
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: var(--ink);
+    }
+    .nav-paper span { margin-left: 6px; color: var(--green); }
+
+    .hero { padding: 38px 0 54px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 25px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+    .hero h1 {
+      max-width: 860px;
+      margin: 16px 0 12px;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.13;
+    }
+    .hero-summary {
+      max-width: 680px;
+      margin: 0;
+      color: #526059;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.65;
+    }
+    .author-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin-top: 14px;
+      color: #34423a;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .author-line .dot { color: #9aa198; }
+    .author-line .venue {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .paper-masthead {
+      padding: 28px 36px;
+      border: 1px solid var(--line);
+      background: rgb(255 255 255 / 28%);
+    }
+    .masthead-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 30px;
+      margin-top: 14px;
+    }
+    .affiliation-logos {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      margin-top: 16px;
+    }
+    .affiliation-logos img {
+      width: auto;
+      height: 43px;
+      object-fit: contain;
+    }
+    .affiliation-logos .hix-logo { max-width: 220px; }
+    .affiliation-logos .ksu-logo { height: 46px; }
+    .doi-link {
+      display: inline-block;
+      margin-top: 13px;
+      color: var(--green);
+      font-size: 13px;
+      text-underline-offset: 3px;
+    }
+    .paper-open { white-space: nowrap; }
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 17px;
+      border: 1px solid var(--green-dark);
+      border-radius: 99px;
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--green); }
+    .button.secondary { background: transparent; color: var(--ink); border-color: #bfc6ba; }
+    .button.secondary:hover { background: #e9eee4; }
+    .button .arrow { color: var(--lime); font-size: 15px; }
+    .button.secondary .arrow { color: var(--green); }
+
+    .metrics-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-block: 1px solid var(--line);
+    }
+    .metric {
+      min-height: 134px;
+      padding: 24px 23px 21px;
+      border-right: 1px solid var(--line);
+    }
+    .metric:first-child { padding-left: 0; }
+    .metric:last-child { border-right: 0; }
+    .metric-value {
+      display: block;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 39px;
+      letter-spacing: -.05em;
+      line-height: 1.1;
+    }
+    .metric-label {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      align-items: start;
+      gap: 35px;
+      margin-bottom: 44px;
+    }
+    .section-index {
+      padding-top: 11px;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 57px);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: 1.08;
+    }
+    .section-lede {
+      max-width: 680px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    .abstract-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .abstract-copy {
+      max-width: 650px;
+      margin: 0;
+      color: #4a5850;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+    .abstract-aside {
+      padding: 24px 0 0 24px;
+      border-left: 1px solid #aeb8a9;
+    }
+    .aside-label {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .abstract-aside p {
+      margin: 11px 0 0;
+      font-family: var(--serif);
+      font-size: 25px;
+      letter-spacing: -.025em;
+      line-height: 1.38;
+    }
+    .keyword-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .keyword {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: #57635b;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    .method-section { background: var(--paper-deep); }
+    .method-note {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 28px;
+      border: 1px solid #d1d4c8;
+      background: rgb(244 243 237 / 65%);
+    }
+    .method-step { padding: 22px 23px; border-right: 1px solid #d1d4c8; }
+    .method-step:last-child { border-right: 0; }
+    .method-step .step {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+    }
+    .method-step h3 { margin: 9px 0 5px; font-size: 14px; }
+    .method-step p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+    .figure-frame {
+      margin: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .figure-frame img { width: 100%; height: auto; }
+    .figure-frame figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 4px 1px;
+      color: #67736b;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .figure-frame figcaption strong { color: var(--ink); font-weight: 650; }
+    .figure-frame figcaption span { flex: 0 0 auto; color: var(--green); font-family: var(--mono); font-size: 10px; }
+    .figure-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .results-section { background: var(--green-dark); color: #f7f6ef; }
+    .results-section .section-index { color: var(--lime); }
+    .results-section .section-lede { color: #c3d0c4; }
+    .results-section .section-heading { margin-bottom: 37px; }
+    .results-callout {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      align-items: center;
+      gap: 38px;
+      margin-bottom: 22px;
+      padding: 28px 30px;
+      border: 1px solid rgb(255 255 255 / 17%);
+      background: rgb(255 255 255 / 5%);
+    }
+    .results-callout .big-number {
+      color: var(--lime);
+      font-family: var(--serif);
+      font-size: clamp(53px, 8vw, 88px);
+      letter-spacing: -.065em;
+      line-height: 1;
+    }
+    .results-callout .big-number span {
+      display: block;
+      margin-top: 9px;
+      color: #c3d0c4;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .results-callout p { max-width: 520px; margin: 0; color: #d5dfd6; font-size: 15px; line-height: 1.8; }
+    .results-section .figure-frame { border-color: rgb(255 255 255 / 18%); background: #fff; }
+    .results-section .figure-frame figcaption { color: #64716b; }
+    .results-section .figure-frame figcaption strong { color: #17241f; }
+
+    .finding-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+      margin-top: 18px;
+    }
+    .finding {
+      min-height: 152px;
+      padding: 20px;
+      border: 1px solid rgb(255 255 255 / 17%);
+    }
+    .finding .finding-num { color: var(--lime); font-family: var(--mono); font-size: 10px; }
+    .finding h3 { margin: 12px 0 6px; font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .finding p { margin: 0; color: #c3d0c4; font-size: 11px; line-height: 1.7; }
+
+    .attention-context {
+      display: grid;
+      grid-template-columns: .76fr 1.24fr;
+      gap: 50px;
+      align-items: center;
+      margin-top: 36px;
+    }
+    .attention-context p { margin: 0; color: #526059; font-size: 15px; line-height: 1.85; }
+    .attention-context strong { color: var(--ink); }
+    .uncertainty-layout {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 36px;
+      align-items: center;
+      padding: 30px;
+      background: #e9ebdf;
+    }
+    .uncertainty-copy .eyebrow { font-size: 10px; }
+    .uncertainty-copy h3 {
+      margin: 18px 0 12px;
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.15;
+    }
+    .uncertainty-copy p { margin: 0; color: #58645d; font-size: 13px; line-height: 1.8; }
+    .uncertainty-stat {
+      padding: 22px;
+      border-left: 1px solid #c9cfc1;
+    }
+    .uncertainty-stat strong {
+      display: block;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 45px;
+      font-weight: 400;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+    .uncertainty-stat span { display: block; margin-top: 9px; color: #5d695f; font-size: 11px; line-height: 1.6; }
+
+    .paper-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 30px;
+      border: 1px solid var(--line);
+    }
+    .paper-card .paper-type {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .paper-card h3 {
+      max-width: 670px;
+      margin: 10px 0 9px;
+      font-family: var(--serif);
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: -.025em;
+      line-height: 1.3;
+    }
+    .paper-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .doi { display: inline-block; margin-top: 9px; color: var(--green); font-size: 12px; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .cite-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin: 32px 0 10px;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .copy-button {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .copy-button:hover { background: #e9eee4; }
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: #ebeae2;
+      color: #38453d;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .site-footer { padding: 27px 0 35px; color: #68746d; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; }
+    .site-footer a { color: var(--green); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, var(--content)); }
+      .header-inner { min-height: 62px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 11px; }
+      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .hero { padding: 30px 0 45px; }
+      .paper-masthead { padding: 22px; }
+      .masthead-layout { grid-template-columns: 1fr; gap: 20px; }
+      .paper-open { justify-self: start; }
+      .metrics-band { grid-template-columns: repeat(2, 1fr); }
+      .metric { min-height: 110px; padding: 18px 14px; border-bottom: 1px solid var(--line); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(3), .metric:nth-child(4) { border-bottom: 0; }
+      .metric:first-child { padding-left: 14px; }
+      .metric-value { font-size: 34px; }
+      .section { padding: 70px 0; }
+      .section-heading { grid-template-columns: 1fr; gap: 12px; margin-bottom: 30px; }
+      .section-index { padding-top: 0; }
+      .abstract-grid, .attention-context { grid-template-columns: 1fr; gap: 30px; }
+      .abstract-aside { padding-top: 0; }
+      .method-note { grid-template-columns: 1fr; }
+      .method-step { border-right: 0; border-bottom: 1px solid #d1d4c8; }
+      .method-step:last-child { border-bottom: 0; }
+      .results-callout { grid-template-columns: 1fr; gap: 18px; padding: 23px; }
+      .results-callout .big-number { font-size: 65px; }
+      .finding-cards { grid-template-columns: 1fr; }
+      .finding { min-height: auto; }
+      .figure-split { grid-template-columns: 1fr; }
+      .uncertainty-layout { grid-template-columns: 1fr; gap: 22px; padding: 23px; }
+      .uncertainty-stat { padding: 18px 0 0; border-left: 0; border-top: 1px solid #c9cfc1; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-card .button { justify-self: start; }
+    }
+    @media (max-width: 420px) {
+      .nav-links { gap: 9px; }
+      .nav-links .nav-paper { padding: 7px 10px; }
+      .nav-paper span { display: none; }
+      .author-line { gap: 7px 11px; font-size: 12px; }
+      .affiliation-logos { gap: 12px; }
+      .affiliation-logos .hix-logo { max-width: 185px; }
+      .affiliation-logos img { height: 36px; }
+      .affiliation-logos .ksu-logo { height: 40px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="../../../" aria-label="Back to Nasim Ahmed's portfolio">
+        <span class="mark" aria-hidden="true">IF</span>
+        <span>Nasim Ahmed / VRST '26</span>
+      </a>
+      <nav class="nav-links" aria-label="Page navigation">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#uncertainty">Uncertainty</a>
+        <a class="nav-paper" href="#paper">Paper <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="page-title">
+      <div class="paper-masthead">
+        <div class="eyebrow">Conference paper · VRST '26</div>
+        <div class="masthead-layout">
+          <div>
+            <h1 id="page-title">I'm Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality</h1>
+            <p class="author-line">
+              <span>Nasim Ahmed and Rifatul Islam</span>
+              <span class="dot" aria-hidden="true">·</span>
+              <span class="venue">32nd ACM Symposium on Virtual Reality Software and Technology · 2026</span>
+            </p>
+            <div class="affiliation-logos" aria-label="Research affiliations">
+              <img class="hix-logo" src="hix-lab.png" width="600" height="180" alt="HiX Lab — Human-Centered Immersive eXperience">
+              <img class="ksu-logo" src="ksu-logo.png" width="1080" height="1080" alt="Kennesaw State University">
+            </div>
+            <a class="doi-link" href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noreferrer">doi.org/10.1145/3822517.3848682 ↗</a>
+          </div>
+          <a class="button paper-open" href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noreferrer">
+            Open paper <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="metrics-band" aria-label="Headline results">
+        <div class="metric">
+          <span class="metric-value">0.0991</span>
+          <span class="metric-label">MAE · HPO-CLD → Maze<br>cross-domain transfer</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0.1645</span>
+          <span class="metric-label">MAE · Maze → HPO-CLD<br>reverse transfer</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">77<span style="font-size:.58em">%</span></span>
+          <span class="metric-label">Relative MAE reduction over CNN<br>HPO-CLD → Maze</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">±2σ</span>
+          <span class="metric-label">Predictive uncertainty<br>95% confidence interval</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">01 / The question</div>
+          <div>
+            <h2>Can a model read cognitive load when the context shifts?</h2>
+            <p class="section-lede">A system trained in a quiet, seated VR session should not lose its footing when a person starts moving.</p>
+          </div>
+        </div>
+        <figure class="figure-frame" style="margin-bottom:28px">
+          <img src="vrst26-31-fig1.jpg" width="1408" height="479" loading="lazy" alt="Study overview showing the challenges of cognitive load prediction across seated and walking VR, the probabilistic multimodal model, and in-domain and cross-domain performance.">
+          <figcaption>
+            <strong>Study overview: from domain shift to uncertainty-aware prediction.</strong>
+            <span>FIG. 01 / OVERVIEW</span>
+          </figcaption>
+        </figure>
+        <div class="abstract-grid">
+          <p class="abstract-copy">
+            Physiological signals such as heart rate and pupil diameter are personal—and they change with the environment. Models trained with stationary users can struggle when applied to active users, where locomotion adds motion artifacts and a new domain shift. We study continuous cognitive load prediction across stationary HPO-CLD and real-walking Maze VR data. Our approach combines eye-tracking and cardiovascular signals, adaptively reweights the two modalities, represents group-level gender differences without a calibration session, and predicts both cognitive load and its uncertainty.
+          </p>
+          <aside class="abstract-aside">
+            <span class="aside-label">The central idea</span>
+            <p>Make the prediction—and make clear how much to trust it.</p>
+            <div class="keyword-list" aria-label="Research topics">
+              <span class="keyword">Virtual reality</span>
+              <span class="keyword">Cross-domain learning</span>
+              <span class="keyword">Multimodal sensing</span>
+              <span class="keyword">Uncertainty estimation</span>
+              <span class="keyword">Cognitive load</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">02 / The method</div>
+          <div>
+            <h2>Two signal streams. One calibrated estimate.</h2>
+            <p class="section-lede">Parallel temporal encoders learn from eye tracking and heart rate, then attention and a learnable gender embedding help the model adapt before it estimates a distribution over cognitive load.</p>
+          </div>
+        </div>
+        <figure class="figure-frame">
+          <img src="vrst26-31-fig2.jpg" width="1410" height="481" loading="lazy" alt="Model architecture with parallel eye-tracking and heart-rate convolutional branches, dual-branch attention, demographic embedding, cross-modal fusion, and probabilistic output.">
+          <figcaption>
+            <strong>From multimodal signals to a probabilistic prediction.</strong>
+            <span>FIG. 02 / ARCHITECTURE</span>
+          </figcaption>
+        </figure>
+        <div class="method-note">
+          <article class="method-step">
+            <span class="step">01 / ENCODE</span>
+            <h3>Learn temporal features</h3>
+            <p>Parallel 1D convolutional branches process 60-second windows of eye-tracking and cardiovascular signals.</p>
+          </article>
+          <article class="method-step">
+            <span class="step">02 / ADAPT</span>
+            <h3>Reweight and fuse</h3>
+            <p>Dual-branch attention adaptively reweights modalities; a learnable gender embedding represents group-level baseline variation.</p>
+          </article>
+          <article class="method-step">
+            <span class="step">03 / ESTIMATE</span>
+            <h3>Predict with uncertainty</h3>
+            <p>A Gaussian output estimates the mean cognitive load and variance, trained with a negative log-likelihood objective.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">03 / The results</div>
+          <div>
+            <h2>Transfer is the test that matters.</h2>
+            <p class="section-lede">Evaluated in both directions between stationary HPO-CLD and real-walking Maze data, the method outperforms standard CNN, LSTM, and transformer baselines.</p>
+          </div>
+        </div>
+        <div class="results-callout">
+          <div class="big-number">0.0991<span>mean absolute error · HPO-CLD → Maze</span></div>
+          <p>For the more demanding stationary-to-walking transfer, the proposed method achieves a 77% relative error reduction compared with a standard CNN baseline. Reverse transfer to HPO-CLD reaches an MAE of 0.1645.</p>
+        </div>
+        <figure class="figure-frame">
+          <img src="vrst26-31-fig4.jpg" width="1384" height="350" loading="lazy" alt="Relative MAE reduction over CNN, LSTM, and transformer baselines for both in-domain datasets and both cross-domain transfer directions.">
+          <figcaption>
+            <strong>Relative MAE reduction against deep-learning baselines.</strong>
+            <span>FIG. 04 / BASELINE COMPARISON</span>
+          </figcaption>
+        </figure>
+        <div class="finding-cards">
+          <article class="finding">
+            <span class="finding-num">01 / GENERALIZATION</span>
+            <h3>Transfer in both directions</h3>
+            <p>The model is evaluated from HPO-CLD to Maze and from Maze to HPO-CLD—not only within a single setting.</p>
+          </article>
+          <article class="finding">
+            <span class="finding-num">02 / PERSONALIZATION</span>
+            <h3>Demographics help</h3>
+            <p>Across both datasets and both transfer directions, adding the demographic embedding lowers MAE compared with removing it.</p>
+          </article>
+          <article class="finding">
+            <span class="finding-num">03 / TRANSPARENCY</span>
+            <h3>Confidence travels with the estimate</h3>
+            <p>The probabilistic output captures predictive spread, making uncertain moments visible to downstream VR systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="attention-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">04 / Looking inside</div>
+          <div>
+            <h2 id="attention-title">Attention shifts with the experience.</h2>
+            <p class="section-lede">The model can change how it weighs physiological and eye-tracking signals over time rather than treating each channel as equally reliable.</p>
+          </div>
+        </div>
+        <div class="attention-context">
+          <p><strong>In the walking example, the input patterns differ from the seated example.</strong> The attention visualization shows how the two branches are weighted through each sequence, offering a view into modality reweighting under changing conditions.</p>
+          <figure class="figure-frame">
+            <img src="vrst26-31-fig3.jpg" width="1384" height="720" loading="lazy" alt="Representative heart-rate and pupil-dilation signals with eye-tracking and heart-rate branch attention weights for a seated and a walking participant.">
+            <figcaption>
+              <strong>Representative signals and attention weights in seated and walking settings.</strong>
+              <span>FIG. 03 / ATTENTION</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="uncertainty">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">05 / Knowing what we don't know</div>
+          <div>
+            <h2>A prediction should come with a sense of confidence.</h2>
+            <p class="section-lede">A point estimate alone hides when a model is unsure. The probabilistic formulation predicts a mean and variance so adaptive experiences can respond more thoughtfully.</p>
+          </div>
+        </div>
+        <div class="uncertainty-layout">
+          <div class="uncertainty-copy">
+            <div class="eyebrow">Confidence-aware cognitive load</div>
+            <h3>More than a line through the data.</h3>
+            <p>The predicted mean tracks the ground-truth cognitive load while shaded bands show the model's estimated uncertainty. Wider intervals indicate moments where the system should be more cautious about acting on the prediction.</p>
+          </div>
+          <div class="uncertainty-stat">
+            <strong>68 / 95</strong>
+            <span>Percent confidence bands from ±1σ and ±2σ around the predicted mean.</span>
+          </div>
+        </div>
+        <figure class="figure-frame" style="margin-top:18px">
+          <img src="vrst26-31-fig6.jpg" width="664" height="316" loading="lazy" alt="Ground-truth and predicted normalized cognitive load over 15 minutes, with shaded 68% and 95% predictive uncertainty bands.">
+          <figcaption>
+            <strong>Predicted cognitive load with its uncertainty bands.</strong>
+            <span>FIG. 06 / PREDICTIVE UNCERTAINTY</span>
+          </figcaption>
+        </figure>
+        <div class="figure-split" style="margin-top:18px">
+          <figure class="figure-frame">
+            <img src="vrst26-31-fig5.jpg" width="616" height="316" loading="lazy" alt="MAE comparison with and without the demographic embedding for HPO-CLD, HPO-CLD to Maze, Maze, and Maze to HPO-CLD; the full model has lower MAE in every setting.">
+            <figcaption>
+              <strong>Effect of the demographic embedding on MAE.</strong>
+              <span>FIG. 05 / EMBEDDING</span>
+            </figcaption>
+          </figure>
+          <aside class="uncertainty-copy" style="align-self:center;padding:12px 8px">
+            <div class="eyebrow">A useful signal for adaptive VR</div>
+            <h3>Know when to pause, adjust, or ask.</h3>
+            <p>When uncertainty rises, an immersive system could avoid overreacting to a noisy estimate—waiting for clearer signals or choosing a gentler adaptation. The prediction is a cue for the experience, not a verdict about the person.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="paper">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="section-index">06 / Read & cite</div>
+          <div>
+            <h2>Take the research further.</h2>
+            <p class="section-lede">The full paper includes the dataset setup, model details, and experimental evaluation.</p>
+          </div>
+        </div>
+        <article class="paper-card">
+          <div>
+            <span class="paper-type">Conference paper · VRST '26</span>
+            <h3>I'm Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality</h3>
+            <p>Nasim Ahmed and Rifatul Islam · 32nd ACM Symposium on Virtual Reality Software and Technology · 2026</p>
+            <a class="doi" href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noreferrer">doi.org/10.1145/3822517.3848682 ↗</a>
+          </div>
+          <a class="button" href="https://doi.org/10.1145/3822517.3848682" target="_blank" rel="noreferrer">
+            Open paper <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+        <div class="cite-label">
+          <span>BibTeX</span>
+          <button class="copy-button" id="copy-citation" type="button">Copy citation</button>
+        </div>
+        <pre id="citation">@inproceedings{ahmed2026feelingdifferent,
+  author    = {Ahmed, Nasim and Islam, Rifatul},
+  title     = {I'm Feeling Different: Uncertainty-Aware Cross-Domain Cognitive Load Prediction in Virtual Reality},
+  booktitle = {Proceedings of the 32nd ACM Symposium on Virtual Reality Software and Technology},
+  year      = {2026},
+  doi       = {10.1145/3822517.3848682}
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>I'm Feeling Different · VRST '26</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    const copyButton = document.querySelector("#copy-citation");
+    const citation = document.querySelector("#citation");
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(citation.textContent);
+        copyButton.textContent = "Copied";
+        window.setTimeout(() => { copyButton.textContent = "Copy citation"; }, 1800);
+      } catch (error) {
+        copyButton.textContent = "Select citation above";
+        window.setTimeout(() => { copyButton.textContent = "Copy citation"; }, 2200);
+      }
+    });
+  </script>
+</body>
+</html>
